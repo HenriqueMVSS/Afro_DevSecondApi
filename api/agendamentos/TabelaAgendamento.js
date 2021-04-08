@@ -6,5 +6,23 @@ module.exports = {
       return await modelTabelaAgendamento.findAll({
         raw: true,
       })
+    },
+    async adicionar(agendamento) {
+      return await modeloAgendamento.create(agendamento);
+    },
+
+
+    async buscarPorPK(id) {
+      return await modeloAgendamento.findByPK(id)  
+
+
+    },
+
+    async remover(id) {
+      return await modeloAgendamento.destroy({
+          where: {
+            id: id
+          }
+      })
     }
 }
