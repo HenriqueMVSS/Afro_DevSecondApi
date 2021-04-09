@@ -40,7 +40,23 @@ class Agendamento {
   }
 
   async remover() {
+    await TabelaAgendamento.buscarPorPK(this.id)
     await TabelaAgendamento.remover(this.id)
+  }
+
+  async atualizar() {
+    
+    const camposAtualizaveis = ['nome_cliente', 'nome_servico', 'status', 'data_agendamento']
+    const dadosAtualizar = {}
+
+    camposAtualizaveis.forEach((campo) => {
+      const valor = this[campo];
+      if(typeof valor === 'string' && valor.length  > 0) {
+        dadosAtualizar[campo] = valor
+      }
+    });
+    
+    await TabelaAgendamento.atualizar(this.id,dadosAtualizar);
   }
 
 }
