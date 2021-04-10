@@ -55,7 +55,7 @@ class Agendamento {
         dadosAtualizar[campo] = valor
       }
     });
-    
+    console.log(dadosAtualizar)
     await TabelaAgendamento.atualizar(this.id,dadosAtualizar);
   }
 
